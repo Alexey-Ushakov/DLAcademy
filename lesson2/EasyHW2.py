@@ -33,6 +33,25 @@ elif answer == "нечетные":
 else:
     print("Я не понимаю, что вы от меня хотите...")
 
+#print("четные или нечетные")
+#answer = input()
+#i = -2
+#s = -1
+#if answer == "четные":
+#    while i < 1000000:
+#        i += 2
+#        print(i)
+#        if i == 20:
+#            break
+#elif answer == "нечетные":
+#    while s < 10000000:
+#        s += 2
+#        print(s)
+#        if s >= 19:
+#            break
+#else:
+#    print("Я не понимаю, что вы от меня хотите...")
+
 
 
 
