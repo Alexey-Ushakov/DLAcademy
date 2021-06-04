@@ -3,11 +3,12 @@ __author__ = 'Ушаков Алексей Юрьевич'
 # Задача-1: Запросите у пользователя его возраст.
 # Если ему есть 18 лет, выведите: "Доступ разрешен",
 # иначе "Извините, пользоваться данным ресурсом можно только с 18 лет"
-# a = input("Введите ваш возраст: ")
-# if int(a) >= 18:
-#     print("Доступ разрешен")
-# else:
-#     print("Извините, пользоваться данным ресурсом можно только с 18 лет")
+
+a = input("Введите ваш возраст: ")
+if int(a) >= 18:
+     print("Доступ разрешен")
+else:
+    print("Извините, пользоваться данным ресурсом можно только с 18 лет")
 
 
 # Задача-2: Напишите программу, которая спрашивает "Четные или нечетные?", в зависимости от ответа,
@@ -23,15 +24,15 @@ __author__ = 'Ушаков Алексей Юрьевич'
 # $ "Четные или нечетные?"
 # qwerty (или любая другая строка)
 # Я не понимаю, что вы от меня хотите...
-#print("четные или нечетные")
-#answer = input()
 
-#if answer == "четные":
-#    print(list(range(0,21,2)))
-#elif answer == "нечетные":
-#    print(list(range(1,21,2)))
-#else:
-#    print("Я не понимаю, что вы от меня хотите...")
+print("четные или нечетные")
+answer = input()
+if answer == "четные":
+   print(list(range(0,21,2)))
+elif answer == "нечетные":
+    print(list(range(1,21,2)))
+else:
+    print("Я не понимаю, что вы от меня хотите...")
 
 #print("четные или нечетные")
 #answer = input()
@@ -60,11 +61,19 @@ __author__ = 'Ушаков Алексей Юрьевич'
 # Подсказки:
 # * постарайтесь решить задачу с применением арифметики и цикла while;
 # * при желании и понимании решите задачу с применением цикла for.
+
+# celoechislo = abs(int(input("Введите любое целое число: ")))
+# maxnumber = -1
+# while celoechislo > 0:
+#    ostatok = celoechislo %10
+#    celoechislo //= 10
+#    if ostatok  >= maxnumber:
+#        maxnumber = ostatok
+# print(maxnumber)
+
 celoechislo = abs(int(input("Введите любое целое число: ")))
 maxnumber = -1
-while celoechislo > 0:
-    ostatok = celoechislo %10
-    celoechislo //= 10
-    if ostatok  >= maxnumber:
-        maxnumber = ostatok
+for i in str(celoechislo):
+    if int(i) >= maxnumber:
+        maxnumber = int(i)
 print(maxnumber)
