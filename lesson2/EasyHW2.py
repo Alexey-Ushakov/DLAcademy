@@ -25,10 +25,13 @@ __author__ = 'Ушаков Алексей Юрьевич'
 # Я не понимаю, что вы от меня хотите...
 print("четные или нечетные")
 answer = input()
+
 if answer == "четные":
-    pass
+    for i in range(0,21,2):
+        print(i)
 elif answer == "нечетные":
-    pass
+    for i in range(1,21,2):
+        print(i)
 else:
     print("Я не понимаю, что вы от меня хотите...")
 
