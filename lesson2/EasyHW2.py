@@ -27,11 +27,9 @@ print("четные или нечетные")
 answer = input()
 
 if answer == "четные":
-    for i in range(0,21,2):
-        print(i)
+    print(list(range(0,21,2)))
 elif answer == "нечетные":
-    for i in range(1,21,2):
-        print(i)
+    print(list(range(1,21,2)))
 else:
     print("Я не понимаю, что вы от меня хотите...")
 
