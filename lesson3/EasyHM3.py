@@ -14,13 +14,19 @@
 # Подсказка: воспользоваться методом .format()
 list_of_fruits = ["яблоко", "банан", "киви", "арбуз"]
 for i in list_of_fruits:
-    s = str(list_of_fruits.index(i) + 1)
-    print(s+".","{:>10}".format(i))
+    print(str(list_of_fruits.index(i) + 1)+".", "{:>10}".format(i))
 
 
 # Задача-2:
 # Даны два произвольные списка.
 # Удалите из первого списка элементы, присутствующие во втором списке.
+list1 = [1, 2, 3, 4, 3, 3, 5]
+list2 = [2, 3, 6, 8, 7, 4, 8, 10,56]
+new_list = []
+for i in list1:
+    if i not in list2:
+        new_list.append(i)
+print(new_list)
 
 
 
