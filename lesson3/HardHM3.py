@@ -4,6 +4,10 @@
 equation = 'y = -12x + 11111140.2121'
 x = 2.5
 # вычислите и выведите y
+equation1 = list(map(str,equation.split()))
+y = float(equation1[2][:-1]) * x + float(equation1[4])
+print(y)
+
 
 
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
