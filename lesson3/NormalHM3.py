@@ -47,3 +47,19 @@ print(new_list_random)
 # например, lst = [1, 2, 4, 5, 6, 2, 5, 2], нужно получить lst2 = [1, 2, 4, 5, 6]
 # б) элементы исходного списка, которые не имеют повторений:
 # например, lst = [1 , 2, 4, 5, 6, 2, 5, 2], нужно получить lst2 = [1, 4, 6]
+
+lst = [1, 2, 4, 5, 6, 2, 5, 2]
+a = set(lst)
+lst = list(a)
+print(lst, type(lst))
+
+lst = [1, 2, 4, 5, 6, 2, 5, 2]
+lst2 = []
+for i in lst:
+    lst.remove(i)
+    if i in lst:
+        lst.remove(i)
+    else:
+        lst2.append(i)
+print(lst2)
+
