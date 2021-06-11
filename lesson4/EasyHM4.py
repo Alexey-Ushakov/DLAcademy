@@ -13,7 +13,19 @@ convert(12)
 # Округление должно происходить по математическим правилам (0.6 --> 1, 0.4 --> 0).
 # Для решения задачи не используйте встроенные функции и функции из модуля math.
 def my_round(number, ndigits):
-    pass
+
+    a = str(number).split(".") # разделяем вещественное число до знака и
+    new_a = list(a[1])
+    if int(new_a[ndigits]) >= ndigits:
+        new_a[ndigits - 1] = int(new_a[ndigits - 1]) + 1
+        new_a[ndigits] = str(new_a[ndigits])
+        new_a[ndigits - 1] = str(new_a[ndigits - 1])
+        new_a = "".join(new_a)
+    new_a = new_a[0:ndigits]
+    a[1] = new_a
+    a = ".".join(a)
+    a = float(a)
+    return a
 
 
 print(my_round(2.1234567, 5))
