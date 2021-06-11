@@ -72,11 +72,23 @@ else:
 #
 # Вход: 11
 # Выход: 5 3
-a = 13
+a = 13 #Номер квартиры которую задают жители
 # здесь функция вычисления этажей
-n = 0
-s = 1
-while a < n
+n = 0 # последовательность этажей с кратным числом квартир
+s = 0 # номер последовательности
+ss = 0 # максимальный этаж в последовательности
+ls = []
+ls_n = []
+while a > n:
+    s += 1
     n += s**2
-
-    print(n)
+    ss += s
+    ls_n.append(int(n))
+    ls.append(int(ss))
+    print(n,s,ss,ls,ls_n)
+stage = ls[-2] + math.ceil(( a - ls_n[-2])/s)
+print(ls[-2],stage)
+pos_kv = a - ls_n[-2]
+while pos_kv > ss:
+    pos_kv = pos_kv - ss
+print(stage,pos_kv)
