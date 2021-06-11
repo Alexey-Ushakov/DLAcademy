@@ -1,6 +1,6 @@
 # Задание-1: уравнение прямой вида y = kx + b задано в виде строки.
 # Определить координату y точки с заданной координатой x.
-
+import math
 equation = 'y = -12x + 11111140.2121'
 x = 2.5
 # вычислите и выведите y
@@ -33,7 +33,7 @@ date = list(map(str, input("Введите дату: ").split(".")))
 
 # elif int(len(str(date[2]))) != 4 and int(len(str(date[0]))) != 2 and int(len(str(date[1]))) != 2:
 #     print('Вы ввели не правильную дату 111')
-if len(str(date[0])) != 2 and len(str(date[1])) != 2 and len(str(date[2])) != 4:
+if len(str(date[0])) != 2 or len(str(date[1])) != 2 or len(str(date[2])) != 4:
     print('Дата введена не корректно введите дату по примеру 01.01.0089')
 elif (int(date[1]) == 2 or int(date[1]) == 4 or int(date[1]) == 6 or int(date[1]) == 9 or int(date[1]) == 11) \
         and int(date[0]) > 30 :
@@ -85,9 +85,7 @@ while a > n:
     ss += s
     ls_n.append(int(n))
     ls.append(int(ss))
-    print(n,s,ss,ls,ls_n)
 stage = ls[-2] + math.ceil(( a - ls_n[-2])/s)
-print(ls[-2],stage)
 pos_kv = a - ls_n[-2]
 while pos_kv > ss:
     pos_kv = pos_kv - ss
