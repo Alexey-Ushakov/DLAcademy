@@ -41,7 +41,22 @@ print(my_round(2.9999967, 5))
 # ибо False (если счастливый и несчастливый соответственно)
 
 def lucky_ticket(ticket_number):
-    pass
+    if len(str(ticket_number)) != 6:
+        return False
+    else:
+        a = str(ticket_number)
+        b = str(a[0:3])
+        c = str(a[3:6])
+        b = list(b)
+        c = list(c)
+        b = [int(x) for x in b]
+        c = [int(x) for x in c]
+        b = sum(b)
+        c = sum(c)
+        if b == c:
+            return True
+        else:
+            return False
 
 
 print(lucky_ticket(123006))
