@@ -86,7 +86,7 @@ while a > n:
     ls_n.append(int(n))
     ls.append(int(ss))
 stage = ls[-2] + math.ceil(( a - ls_n[-2])/s)
-pos_kv = a - ls_n[-2]
+pos_kv = a - ls_n[-2] # Можно проще разделить с остатком
 while pos_kv > ss:
     pos_kv = pos_kv - ss
 print(stage,pos_kv)
