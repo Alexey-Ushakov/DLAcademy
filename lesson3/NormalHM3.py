@@ -48,6 +48,13 @@ while len(new_list_random) < nummber_of_elements:
             new_list_random.append((random.randint(-100, 100)))
 print(new_list_random)
 
+# new_list_random = list(map(lambda _: random.randint(-100, 100), range(0, nummber_of_elements)))
+# print(new_list_random)
+#
+
+new_list_random = list(random.randint(-100, 100) for i in range(0,nummber_of_elements))
+print(new_list_random)
+
 
 # Задача-4: Дан список, заполненный произвольными целыми числами.
 # Получите новый список, элементами которого будут:
@@ -61,14 +68,16 @@ a = set(lst)
 lst = list(a)
 print(lst)
 
-lst = [1, 2, 4, 5, 6, 2, 5, 2]
+lst1 = [1, 2, 4, 5, 6, 2, 5, 2]
 lst2 = []
-for i in lst:
-    lst.remove(i)
-    if i in lst:
-        lst.remove(i)
-    else:
+print ("lst1 = ", lst1)
+
+#  Метод count сколько раз этот элемент повторяетсья в строке или списке если 1 то повторяющихся элементов нет
+for i in lst1:
+    n = lst1.count(i)
+    if n == 1:
         lst2.append(i)
-print(lst2)
+
+print ("lst2 = ", lst2)
 
 
