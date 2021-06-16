@@ -71,3 +71,4 @@ for i in lst:
         lst2.append(i)
 print(lst2)
 
+

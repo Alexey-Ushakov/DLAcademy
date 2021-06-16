@@ -8,8 +8,6 @@ equation1 = list(map(str,equation.split()))
 y = float(equation1[2][:-1]) * x + float(equation1[4])
 print(y)
 
-
-
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
 # Проверить, корректно ли введена дата.
 # Условия корректности:
