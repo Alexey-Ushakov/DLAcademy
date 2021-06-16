@@ -12,9 +12,13 @@
 # 4.  арбуз
 
 # Подсказка: воспользоваться методом .format()
+# list_of_fruits = ["яблоко", "банан", "киви", "арбуз"]
+# for i in list_of_fruits:
+#     print(str(list_of_fruits.index(i) + 1)+".", "{:>10}".format(i))
+
 list_of_fruits = ["яблоко", "банан", "киви", "арбуз"]
-for i in list_of_fruits:
-    print(str(list_of_fruits.index(i) + 1)+".", "{:>10}".format(i))
+for i, fruit in enumerate(list_of_fruits, 1):
+    print("{}. {:>10}".format(i, fruit))
 
 
 # Задача-2:
@@ -22,11 +26,26 @@ for i in list_of_fruits:
 # Удалите из первого списка элементы, присутствующие во втором списке.
 list1 = [1, 2, 3, 4, 3, 3, 5]
 list2 = [2, 3, 6, 8, 7, 4, 8, 10, 56]
-new_list = []
-for i in list1:
-    if i not in list2:
-        new_list.append(i)
-print(new_list)
+#  Мой способ
+
+# new_list = []
+# for i in list1:
+#     if i not in list2:
+#         new_list.append(i)
+# print(new_list)
+
+#  Способ наставника
+#  Зачем то использовалась копия списка но мы же изменяем первый список
+#  Копию мы используем потому что пробегая по списку мы изменяем сам список следовательно это влияет
+#  на опирацию и происходит смещение элементов
+
+for i in list1.copy():
+    if i in list2:
+        list1.remove(i)
+print(list1)
+
+
+
 
 
 
