@@ -3,9 +3,16 @@
 # т.е функция ничего не возвращает, а выводит на консоль ответ самостоятельно
 # Предполагается, что 1км = 1,609 мили
 def convert(km):
+    """
+    Возвращает значение километров переведенных в мили
+    :param km: значение километров которые нужно перевести в мили
+    :return: Возвращает значение миль переведенных из километров
+    """
     miles = 1.609 * km
-    print(miles)
-convert(12)
+    return miles
+print(convert(4))
+print(convert(11))
+print(convert(2))
 
 # Задание-2:
 # Напишите функцию, округляющую полученное произвольное десятичное число
@@ -13,19 +20,23 @@ convert(12)
 # Округление должно происходить по математическим правилам (0.6 --> 1, 0.4 --> 0).
 # Для решения задачи не используйте встроенные функции и функции из модуля math.
 def my_round(number, ndigits):
-
-    a = str(number).split(".") # разделяем вещественное число до знака и
-    new_a = list(a[1])
-    if int(new_a[ndigits]) >= ndigits:
-        new_a[ndigits - 1] = int(new_a[ndigits - 1]) + 1
-        new_a[ndigits] = str(new_a[ndigits])
-        new_a[ndigits - 1] = str(new_a[ndigits - 1])
-        new_a = "".join(new_a)
-    new_a = new_a[0:ndigits]
-    a[1] = new_a
-    a = ".".join(a)
-    a = float(a)
-    return a
+    """
+    Возвращает округленное десятичное число с заданным колличеством знаков после запятой
+    :param number: Значение числа которое нужно округлить
+    :param ndigits: Значение колличества знаков после запятой
+    :return: Возвращает значение округленного числа
+    """
+    a = str(number).split(".")  # разделяем вещественное число на две строки до точки и после
+    if int(a[1][ndigits:(ndigits + 1)]) >= 5:  # Проводим проверку в какую сторону будем округлять
+        a = a[0] + "." + a[1][0:ndigits]  # Собираем строку заного и отбрасываем элементы которые нам не нужны
+        a = float(a) + 1 / (10 ** ndigits)  # Преобразуем строку в вещественное число и добавляем 1 в тот
+        # разряд который необходим
+        return a  # Возвращвем а
+    else:
+        a = a[0] + "." + a[1][0:ndigits]  # Если округление в меньшую сторону просто отбрасываем
+        # не нужные порядки и собираем строку
+        a = float(a)
+        return a
 
 
 print(my_round(2.1234567, 5))
@@ -41,19 +52,23 @@ print(my_round(2.9999967, 5))
 # ибо False (если счастливый и несчастливый соответственно)
 
 def lucky_ticket(ticket_number):
-    if len(str(ticket_number)) != 6:
-        return False
+    """
+    Возвращает значение True если билет счастливый(сумма первых трех цифор его номера равна сумме трем последним цифрам номера
+    иначе возвращает False
+    :param ticket_number: Значение номера билета
+    :return: Возвращает True или False
+    """
+    if len(str(ticket_number)) != 6:  # проверка что у счастливого билета есть достаточное колличество чисел в номере
+        return False  # Если его не достаточно вернуть False
     else:
-        a = str(ticket_number)
-        b = str(a[0:3])
-        c = str(a[3:6])
-        b = list(b)
-        c = list(c)
-        b = [int(x) for x in b]
-        c = [int(x) for x in c]
-        b = sum(b)
-        c = sum(c)
-        if b == c:
+        t_n = str(ticket_number)  # t_n временная переменная для простоты записи, также переводим номер в строку
+        levai_chast = list(str(t_n[0:3]))  # срез левой части , также сразу делаем списком
+        pravai_cast = list(str(t_n[3:6]))  # срез правой части, делаем списком для простоты вычисления
+        levai_chast = [int(x) for x in levai_chast]  # преобразуем списки правой и левой части в целые числа
+        pravai_cast = [int(x) for x in pravai_cast]
+        levai_chast = sum(levai_chast)  # производим сложение элементов левой части
+        pravai_cast = sum(pravai_cast)  # сложение элементов правой части
+        if levai_chast == pravai_cast:  # сравниваем сумму если они равно то билет счастливый
             return True
         else:
             return False
@@ -62,3 +77,30 @@ def lucky_ticket(ticket_number):
 print(lucky_ticket(123006))
 print(lucky_ticket(12321))
 print(lucky_ticket(436751))
+
+def lucky_ticket(ticket_number):
+    """
+    Возвращает значение True если билет счастливый(сумма цифр левой его стороны равна сумме цифр правой стороны
+    его номера иначе возвращает False
+    :param ticket_number: Значение номера билета
+    :return: Возвращает True или False
+    """
+    if len(str(ticket_number)) % 2 != 0:  # не букдим брать сложные варианты когда сумма левой части равна сумме правой
+        # и равна номеру по середине. Также исключаем вариант исключения центрального числа. Если будет время займемся ими позже
+        return False  # Собственно из этого следует что счастливыми билетами могут быть только с четным колличеством цифр
+    else:
+        t_n = str(ticket_number)  # t_n временная переменная для простоты записи, также переводим номер в строку
+        t_p = int(len(t_n))  # Временная переменная длинны строки какой бы она не была
+        left_chast = list(t_n[0:int(t_p / 2)])  # Собственно левая часть билета с возможностью деления его по полам ну и любой длинны
+        right_chast = list(t_n[int((t_p / 2)): int(t_p)])  # То же самое с правой частью
+        left_chast = [int(x) for x in left_chast]  # преобразуем списки правой и левой части в целые числа
+        right_chast = [int(x) for x in right_chast]
+        if sum(left_chast) == sum(right_chast):  # сравниваем сумму если они равно то билет счастливый
+            return True
+        else:
+            return False
+
+print(lucky_ticket(123006))
+print(lucky_ticket(12321))
+print(lucky_ticket(436751))
+print(lucky_ticket(24367512))
