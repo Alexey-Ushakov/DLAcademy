@@ -48,36 +48,44 @@ path = os.path.join("data", "hours_of.txt")
 f = open(path, encoding="UTF-8" )
 # with open("data", "hours_of.txt") as read_file:
 #     read_file.read()
-b = f.readline().split()
-dic_work = {}
-dic_work["Name"] = [""]
-dic_work["Last_name"] = [""]
-dic_work["hours_at_work"] = [""]
-for b in range(6):
-    b = f.readline().split()
-    # print(b)
-    # print(dic_work)
-    dic_work["Name"] += b[0].split()
-    dic_work["Last_name"] += b[1].split()
-    dic_work["hours_at_work"] += b[2].split()
+b = f.readlines()
+new_b = []
+for i in b:
+    i = i.split()
+    new_b.append(i)
 f.close
-print(dic_work["Name"])
-
+new_b[0][2] = "Отработано часов"
+del new_b[0][3]
+# for i in new_b:
+#     for j in i:
+#         print(j)
 path = os.path.join("data", "workers.txt")
 f = open(path, encoding="UTF-8" )
-b = f.readline().split()
-dic_work = {}
-dic_work["Name"] = [""]
-dic_work["Last_name"] = [""]
-dic_work["hours_at_work"] = [""]
-for b in range(6):
-    b = f.readline().split()
-    # print(b)
-    # print(dic_work)
-    dic_work["Name"] += b[0].split()
-    dic_work["Last_name"] += b[1].split()
-    dic_work["hours_at_work"] += b[2].split()
+w = f.readlines()
+new_w = []
+for i in w:
+    i = i.split()
+    new_w.append(i)
 f.close
+# print(new_b)
+# print(new_w)
+new_a = []
+new_b = sorted(new_b)
+new_w = sorted(new_w)
+i = 0
+while i < len(new_w):
+    new_w[i].append(new_b[i][2])
+    i += 1
+del new_w[3]
+for i in new_w:
+    if int(i[4]) > int(i[5]):
+        a =int((int(i[2]) / int(i[4])) * (int(i[5])))
+        i.append(a)
+    elif int(i[4]) <= int(i[5]):
+        a = int(int(i[2]) + ((int(i[5]) - int(i[4])) * 2 * (int(i[2]) / int(i[4]))))
+        i.append(a)
+for i in new_w:
+    print(i)
 
 
 
