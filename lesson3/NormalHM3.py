@@ -10,7 +10,7 @@ list1 = [2, -5, 8, 9, -25, 25, 4]
 new_list = []
 for i in list1:
     if i >= 0:
-        if math.sqrt(i) - int(math.sqrt(i)) == 0:
+        if math.sqrt(i) == int(math.sqrt(i)):
             new_list.append(int(math.sqrt(i)))
 print(new_list)
 
