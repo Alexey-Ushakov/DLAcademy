@@ -43,6 +43,42 @@ print("{} {}/{}".format(celai,drobnai,obch_znam ))
 # то их ЗП уменьшается пропорционально, а за заждый час переработки
 # они получают удвоенную ЗП, пропорциональную норме.
 # Кол-во часов, которые были отработаны, указаны в файле "data/hours_of"
+import os
+path = os.path.join("data", "hours_of.txt")
+f = open(path, encoding="UTF-8" )
+# with open("data", "hours_of.txt") as read_file:
+#     read_file.read()
+b = f.readline().split()
+dic_work = {}
+dic_work["Name"] = [""]
+dic_work["Last_name"] = [""]
+dic_work["hours_at_work"] = [""]
+for b in range(6):
+    b = f.readline().split()
+    # print(b)
+    # print(dic_work)
+    dic_work["Name"] += b[0].split()
+    dic_work["Last_name"] += b[1].split()
+    dic_work["hours_at_work"] += b[2].split()
+f.close
+print(dic_work["Name"])
+
+path = os.path.join("data", "workers.txt")
+f = open(path, encoding="UTF-8" )
+b = f.readline().split()
+dic_work = {}
+dic_work["Name"] = [""]
+dic_work["Last_name"] = [""]
+dic_work["hours_at_work"] = [""]
+for b in range(6):
+    b = f.readline().split()
+    # print(b)
+    # print(dic_work)
+    dic_work["Name"] += b[0].split()
+    dic_work["Last_name"] += b[1].split()
+    dic_work["hours_at_work"] += b[2].split()
+f.close
+
 
 
 # Задание-3:
