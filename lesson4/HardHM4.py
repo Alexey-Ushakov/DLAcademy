@@ -150,18 +150,13 @@ for i in new_w:
 # Чтобы получить список больших букв русского алфавита:
 # print(list(map(chr, range(ord('А'), ord('Я')+1))))
 
-#
-# import os
-# path = os.path.join("data", "fruits.txt")
-# f = open(path, encoding="UTF-8" )
-# b = f.readlines()
-# f.close
-# fruits_А = open(r"E:\PycharmProjects\DlAcademy\lesson4\data\fruits_{}.txt".format({}), "w+", encoding="UTF-8")
-# for i in b:
-#     for item in list(map(chr, range(ord('А'), ord('Я') + 1))):
-#
-#         if item == (i)[0:1:]:
-#             file_name = 'fruits_{}.txt'.format(item)
-#             with open(file_name, 'w+', encoding="UTF-8")) as f:
-#                        f.write(i)
-# f.close
+import os
+path_fruits = os.path.join("data","fruits.txt")
+
+with open(path_fruits, 'r', encoding='UTF-8') as f:
+    for i in f:
+        for item in list(map(chr, range(ord('А'), ord('Я') + 1))):
+            if item == (i)[0:1:]:
+                file_name ="data" "fruits_" + item + '.txt'
+                with open(file_name, 'a+', encoding="UTF-8") as f:
+                    f.write(i)
