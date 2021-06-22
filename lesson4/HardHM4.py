@@ -161,3 +161,33 @@ with open(path_fruits, 'r', encoding='UTF-8') as f:  # Открываем его
                 path = os.path.join("data", file_name)
                 with open(path, 'a+', encoding="UTF-8") as f:
                     f.write(i)
+
+
+
+# import os
+#
+# path_fruits = os.path.join("data", "fruits.txt")
+# with open(path_fruits, 'r', encoding='UTF-8') as f:
+#     fruits = []
+#     for i in f.readlines():
+#         fruits.append(i)
+# fruits_dict = {}
+#
+# for fruit in fruits:
+#     if fruit[0] in list(map(chr, range(ord('А'), ord('Я')+1))):
+#         if fruit[0] in fruits_dict.keys():
+#             fruits_dict[fruit[0]].append(fruit)
+#         else:
+#             fruits_dict.update({fruit[0]: [fruit]})
+#
+#
+# for i, j in fruits_dict.items():
+#     file_name = "fruits_" + i + '.txt'
+#     path = os.path.join('directory', file_name)
+#     with open(path, 'w', encoding='UTF-8') as f:
+#         for fruit in j:
+#             f.write(fruit)
+#
+#
+# fruits_dict = {}
+# print(fruits)
