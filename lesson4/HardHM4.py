@@ -54,7 +54,7 @@ def obshai_drob(element):
     return list_obshai_drob
 
 
-drob = "- 5/6 - 2/8"
+drob = "5/6 - 2/8"
 SIGN_PLUS = " + "
 SIGN_MINUS = " - "
 sign = "+"
@@ -151,12 +151,13 @@ for i in new_w:
 # print(list(map(chr, range(ord('А'), ord('Я')+1))))
 
 import os
-path_fruits = os.path.join("data","fruits.txt")
-
-with open(path_fruits, 'r', encoding='UTF-8') as f:
+path_fruits = os.path.join("data","fruits.txt")  # Указываем путь к файлу
+with open(path_fruits, 'r', encoding='UTF-8') as f:  # Открываем его как f
     for i in f:
-        for item in list(map(chr, range(ord('А'), ord('Я') + 1))):
+        for item in list(map(chr, range(ord('А'), ord('Я') + 1))):  # Пробегаем по алфавиту и сравниваем первую букву
+            # строки с буквой в алфавите
             if item == (i)[0:1:]:
-                file_name ="data" "fruits_" + item + '.txt'
-                with open(file_name, 'a+', encoding="UTF-8") as f:
+                file_name ="fruits_" + item + '.txt'
+                path = os.path.join("data", file_name)
+                with open(path, 'a+', encoding="UTF-8") as f:
                     f.write(i)
