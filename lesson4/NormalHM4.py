@@ -21,12 +21,12 @@ def fibonacci(n, m):
         fib1, fib2 = fib2, fib1 + fib2
         if z >= n:
             list_fib.append(fib2)
-    for i, val in enumerate(list_fib):
-        if i >= n and i <= m:
-            new_listfib.append(val)
-    return new_listfib
+    return list_fib[n-1:m]
 
-print(fibonacci(1, 8))
+
+print(fibonacci(2, 8))
+
+
 
 # Задача-2:
 # Напишите функцию, сортирующую принимаемый список по возрастанию.
@@ -51,6 +51,21 @@ def sort_to_max(origin_list):
     print(origin_list)
 
 sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0])
+
+
+# def new_sort(origin_list):
+#     mixed = True
+#     iter_num = 1
+#     while mixed:
+#         mixed = False
+#         for i in range(0, len(origin_list)-iter_num):
+#             if origin_list[i] > origin_list[i+1]:
+#                 origin_list[i], origin_list[i+1] = origin_list[i+1], origin_list[i]
+#                 mixed = True
+#         iter_num += 1
+#     print(origin_list)
+#
+
 
 # Задача-3:
 # Напишите собственную реализацию стандартной функции filter.
