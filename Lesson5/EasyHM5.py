@@ -30,12 +30,15 @@ print(ls_2)
 # Получить список фруктов, присутствующих в обоих исходных списках.
 ls_f1 = ["apple", "banan", "tomato", "pear", "blueberries", "Gooseberries"]
 ls_f2 = ["apple", "banan", "tomato", "avocado", "Cherries", "Grapefruit", "Gooseberries"]
-ls_f3 =[]
-for i in ls_f1.copy():
-    for j in ls_f2.copy():
-        if j == i:
-            ls_f3.append(i)
+ls_f3 =[i for i in ls_f1 if i in ls_f2]
 print(ls_f3)
+# ls_f3 =[]
+# for i in ls_f1.copy():
+#     for j in ls_f2.copy():
+#         if j == i:
+#             ls_f3.append(i)
+
+# print(ls_f3)
 
 # Задание-3:
 # Дан список, заполненный произвольными числами.
@@ -45,10 +48,11 @@ print(ls_f3)
 # + Элемент не кратен 4
 import random
 my_list = [random.randint(-100, 100) for i in range(0, 100)]
-# my_list =[my_list.append(i) for i in my_list if i % 3 == 0 or i > 0 or i %4 == 0]
-my_list1 = []
-print(my_list)
-for i in my_list.copy():
-    if i % 3 == 0 and i > 0 and i % 4 == 0:
-        my_list1.append(i)
+my_list1 = [i for i in my_list if i % 3 == 0 and i > 0 and i % 4 == 0]
 print(my_list1)
+# my_list =[my_list.append(i) for i in my_list if i % 3 == 0 or i > 0 or i %4 == 0]
+# my_list1 = []
+# for i in my_list.copy():
+#     if i % 3 == 0 and i > 0 and i % 4 == 0:
+#         my_list1.append(i)
+# print(my_list1)
