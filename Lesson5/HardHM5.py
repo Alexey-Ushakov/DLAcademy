@@ -103,11 +103,11 @@ if a:
         if n >= 2:
             a = False
             break
-        for j in list_of_chess_y:
-            n = list_of_chess_y.count(i)
-            if n >= 2:
-                a = False
-                break
+    for j in list_of_chess_y:
+        m = list_of_chess_y.count(j)
+        if m >= 2:
+            a = False
+            break
     i = 0
     while i < (len(list_of_chess) - 1):
         j = 0
