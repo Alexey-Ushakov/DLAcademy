@@ -35,10 +35,9 @@ import sys
 # из которой запущен данный скрипт.
 # И второй скрипт, удаляющий эти папки.
 def make_dir(derectory):
-
     try:
         if os.path.exists(derectory):
-            raise Exception("Это папка уже есть")
+            raise Exception("Невозможно создать")
         else:
             os.mkdir(derectory)
     except Exception as e:
@@ -94,26 +93,38 @@ shutil.copy(src, dst)
 print(os.listdir(os.path.dirname(__file__)))
 
 
+# def go_in_dir(derectory):
+#     try:
+#         if not os.path.exists(derectory):
+#             raise Exception("Нет такой папки")
+#         else:
+
+
+
+def change_dir(derectory):
+    print(os.getcwd())
+    print("Введите полный путь: ")
+    try:
+        if not os.path.exists(derectory):
+            raise Exception("Невозможно перейти")
+        else:
+            os.chdir(derectory)
+    except Exception as e:
+        print(e)
+    else:
+        print("Успешно перешол в \n{}".format(derectory))
+
+
+
+def look_dir():
+    print(os.listdir())
 
 
 
 
-# destdir = os.path.abspath('destdir')
-# if not os.path.exists(destdir):
-#     os.makedirs(destdir)
 
-# # с использованием системного shell'а
-# os.system('copy %s %s' % (__file__, destdir))
-# # другой вариант - с получением полного имени скрипта через sys.argv[0]
-# os.system('copy %s %s' % (sys.argv[0], destdir))
-#
-# # без shell'а
-# dirname, filename = os.path.split(__file__)
-# content = open(__file__).read()
-# open(os.path.join(destdir, filename), 'w').write(content)
-#
-# from shutil import copyfile, copy
-#
-# copy(__file__, destdir)  # копируем в указанную директорию
-# copyfile(__file__, os.path.join(destdir, filename))  # копируем по полному пути нового расположения
+
+
+
+
 
