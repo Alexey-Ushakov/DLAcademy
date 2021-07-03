@@ -1,7 +1,7 @@
 import math
 # Задача-1: Написать класс для фигуры-треугольника, заданного координатами трех точек.
 # Определить методы, позволяющие вычислить: площадь, высоту и периметр фигуры.
-
+# Ассимилированное чужое решение в самом низу
 class Triangle:
 
     def __init__(self, x1, y1, x2, y2, x3, y3):
@@ -99,5 +99,41 @@ trapezoid_1 = Trapezoid(1, 8, 3, 5, -6, 0, 5, 10)
 print(trapezoid_1.sides_trapezoid())
 print(trapezoid_1.trapezoid_typing())
 print(trapezoid_1.trapezoid_perimeter())
+
+
+# class Triangle:
+#
+#     def __init__(self, _apexA, _apexB, _apexC):
+#         self._apexA = _apexA
+#         self._apexB = _apexB
+#         self._apexC = _apexC
+#
+#     def width(self, A, B):
+#         return math.sqrt(sum(list(map(lambda x, y: (x - y) ** 2, A, B))))
+#
+#     def sides(self):
+#         return {'AB': self.width(self._apexA, self._apexB),
+#                 'BC': self.width(self._apexB, self._apexC),
+#                 'AC': self.width(self._apexC, self._apexA)
+#                 }
+#
+#     def area(self):
+#         return round((lambda p, a, b, c:
+#                       math.sqrt(p * (p - a) * (p - b) * (p - c)))
+#                      (self.perimeter() / 2,
+#                       self.sides()['AB'],
+#                       self.sides()['BC'],
+#                       self.sides()['AC']), 2)
+#
+#     def height(self):
+#         return (lambda p, a, b, c:
+#                 2 * math.sqrt(p * (p - a) * (p - b) * (p - c)) / a) \
+#             (self.perimeter() / 2,
+#              self.sides()['AB'],
+#              self.sides()['BC'],
+#              self.sides()['AC'])
+#
+#     def perimeter(self):
+#         return self.sides()['AB'] + self.sides()['BC'] + self.sides()['AC']
 
 
