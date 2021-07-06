@@ -1,6 +1,5 @@
 import os
 import sys
-from EasyHM6 import make_dir, make_del_dir, change_dir, look_dir
 
 # Задача-1:
 # Примечание: Если уже делали easy задание, то просто перенесите решение сюда.
@@ -8,30 +7,30 @@ from EasyHM6 import make_dir, make_del_dir, change_dir, look_dir
 # используя конструкцию try добавьте в код обработку соответствующих исключений.
 # Пример.
 # Исходная программа:
-def avg(a, b):
-    """Вернуть среднее геометрическое чисел 'a' и 'b'.
-
-    Параметры:
-        - a, b (int или float).
-
-    Результат:
-        - float.
-    """
-    return (a * b) ** 0.5
-while True:
-    try:
-        a = float(input("a = "))
-        b = float(input("b = "))
-        if a * b < 0:
-            raise Exception("Пожайлуста введите либо два положительных числа либо два отрицательных")
-        c = avg(a, b)
-    except ValueError:
-        print("Введите число без посторонних символов и букв")
-    except Exception as e:
-        print(e)
-    else:
-        print("Среднее геометрическое = {:.2f}".format(c))
-        break
+# def avg(a, b):
+#     """Вернуть среднее геометрическое чисел 'a' и 'b'.
+#
+#     Параметры:
+#         - a, b (int или float).
+#
+#     Результат:
+#         - float.
+#     """
+#     return (a * b) ** 0.5
+# while True:
+#     try:
+#         a = float(input("a = "))
+#         b = float(input("b = "))
+#         if a * b < 0:
+#             raise Exception("Пожайлуста введите либо два положительных числа либо два отрицательных")
+#         c = avg(a, b)
+#     except ValueError:
+#         print("Введите число без посторонних символов и букв")
+#     except Exception as e:
+#         print(e)
+#     else:
+#         print("Среднее геометрическое = {:.2f}".format(c))
+#         break
 
 # ПРИМЕЧАНИЕ: Для решения задачи 2-3 необходимо познакомиться с модулями os, sys!
 # СМ.: https://pythonworld.ru/moduli/modul-os.html, https://pythonworld.ru/moduli/modul-sys.html
@@ -63,46 +62,44 @@ def print_help():
     print("mkdir <derectory>" )
     print("mkdeldir <derectory>")
 
-# def make_dir(derectory):
-#     if not derectory:
-#         print('enter derectory')
-#         return
-#     try:
-#         if os.path.exists(derectory):
-#             raise Exception("Невозможно создать")
-#         else:
-#             os.mkdir(derectory)
-#     except Exception as e:
-#         print(e)
-#     else:
-#         print("дириктория {} создана".format(derectory))
-#
-# def look_dir():
-#     print(os.listdir())
-#
-# def change_dir(fullderectory):
-#     print(os.getcwd())
-#     print("Введите полный путь: ")
-#     try:
-#         if not os.path.exists(fullderectory):
-#             raise Exception("Невозможно перейти")
-#         else:
-#             os.chdir(fullderectory)
-#     except Exception as e:
-#         print(e)
-#     else:
-#         print("Успешно перешол в \n{}".format(fullderectory))
-#
-# def make_del_dir(derectory):
-#     try:
-#         if not os.path.exists(derectory):
-#             raise Exception("Нет такой папки")
-#         else:
-#             os.rmdir(derectory)
-#     except Exception as e:
-#         print(e)
-#     else:
-#         print("дириктория {} удалена".format(derectory))
+def make_dir():
+    if not derectory:
+        print("Укажите диреторию вторым параметром")
+        return
+    dir_path = os.path.join(os.getcwd(), derectory)
+    try:
+        os.mkdir(dir_path)
+        print('директория {} создана'.format(derectory))
+    except FileExistsError:
+        print('директория {} уже существует'.format(derectory))
+
+def make_del_dir():
+    if not derectory:
+        print("Укажите диреторию вторым параметром")
+        return
+    dir_path = os.path.join(os.getcwd(), derectory)
+    try:
+        os.rmdir(dir_path)
+        print('директория {} удалена'.format(derectory))
+    except FileExistsError:
+        print('директория {} не существует'.format(derectory))
+
+def look_dir():
+    print(os.listdir())
+
+def change_dir():
+    if not derectory:
+        print('Необходимо указать имя директории вторым параметром')
+        return
+    try:
+        os.chdir(derectory)
+        print('Успешно перешли в папку: {}'.format(derectory))
+        print('Текущий каталог: ', os.getcwd())
+    except FileNotFoundError:
+        print('dir_{} - папки не существует'.format(derectory))
+
+
+
 
 do = {
     'help': print_help,
@@ -110,6 +107,7 @@ do = {
     'lookdir': look_dir,
     'changedir': change_dir,
     'mkdeldir': make_del_dir,
+
     }
 
 try:
