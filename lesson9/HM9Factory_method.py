@@ -63,3 +63,4 @@ factory = Tagfactory()
 elements = ["image", "input", 'a', 'p', '']
 for el in elements:
     print(factory.create_tag(el).get_html())
+
