@@ -1,131 +1,65 @@
-from __future__ import annotations
-from abc import ABC, abstractmethod
-
-# class Tagfactory:
-#     def __init__(self):
-#
-#     def creare_tag(self):
-#
-#
-# factory = Tagfactory(ABC)
-#     def
-# elements = ["image", "input", "p", "a", ""]
-# for el in elements:
-#     print(factory.create_tag(el).get.html())
-#
-# class Image:
-#     def __init__(self, src=None):
-#         self.src = src
-#         pass
-# class Input:
-#     def __init__(self, in_type=None):
-#         self.in_type = in_type
-#     pass
-# class Text:
-#     def __init__(self, text=None):
-#         self.text = text
-# class Link:
-#     def __init__(self, link=None):
-#         self.link = link
+import abc
 
 
-class Creator(ABC):
-    """
-    Класс Создатель объявляет фабричный метод, который должен возвращать объект
-    класса Продукт. Подклассы Создателя обычно предоставляют реализацию этого
-    метода.
-    """
-
-    @abstractmethod
-    def factory_method(self):
-        """
-        Обратите внимание, что Создатель может также обеспечить реализацию
-        фабричного метода по умолчанию.
-        """
-        pass
-
-    def some_operation(self) -> str:
-        """
-        Также заметьте, что, несмотря на название, основная обязанность
-        Создателя не заключается в создании продуктов. Обычно он содержит
-        некоторую базовую бизнес-логику, которая основана на объектах Продуктов,
-        возвращаемых фабричным методом. Подклассы могут косвенно изменять эту
-        бизнес-логику, переопределяя фабричный метод и возвращая из него другой
-        тип продукта.
-        """
-
-        # Вызываем фабричный метод, чтобы получить объект-продукт.
-        product = self.factory_method()
-
-        # Далее, работаем с этим продуктом.
-        result = f"Creator: The same creator's code has just worked with {product.operation()}"
-
-        return result
-
-
-"""
-Конкретные Создатели переопределяют фабричный метод для того, чтобы изменить тип
-результирующего продукта.
-"""
-
-
-class ConcreteCreator1(Creator):
-    """
-    Обратите внимание, что сигнатура метода по-прежнему использует тип
-    абстрактного продукта, хотя фактически из метода возвращается конкретный
-    продукт. Таким образом, Создатель может оставаться независимым от конкретных
-    классов продуктов.
-    """
-
-    def factory_method(self) -> Product:
-        return ConcreteProduct1()
-
-
-class ConcreteCreator2(Creator):
-    def factory_method(self) -> Product:
-        return ConcreteProduct2()
-
-
-class Product(ABC):
-    """
-    Интерфейс Продукта объявляет операции, которые должны выполнять все
-    конкретные продукты.
-    """
-
-    @abstractmethod
-    def operation(self) -> str:
+class Tag(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def get_html(self):
         pass
 
 
-"""
-Конкретные Продукты предоставляют различные реализации интерфейса Продукта.
-"""
+class Image(Tag):
+    def __init__(self):
+        self.src = "img"
+
+    def get_html(self):
+        return "<></{}>".format(self.src)
 
 
-class ConcreteProduct1(Product):
-    def operation(self) -> str:
-        return "{Result of the ConcreteProduct1}"
+class Input(Tag):
+    def __init__(self):
+        self.in_type = "input"
+
+    def get_html(self):
+        return "<></{}>".format(self.in_type)
+
+class Text(Tag):
+    def __init__(self):
+        self.text = "p"
+
+    def get_html(self):
+        return "<></{}>".format(self.text)
 
 
-class ConcreteProduct2(Product):
-    def operation(self) -> str:
-        return "{Result of the ConcreteProduct2}"
+class Link(Tag):
+    def __init__(self):
+        self.link = 'a'
 
+    def get_html(self):
+        return "<></{}>".format(self.link)
 
-def client_code(creator: Creator) -> None:
-    """
-    Клиентский код работает с экземпляром конкретного создателя, хотя и через
-    его базовый интерфейс. Пока клиент продолжает работать с создателем через
-    базовый интерфейс, вы можете передать ему любой подкласс создателя.
-    """
+class None_text(Tag):
+    def __init__(self):
+        self.none_text = ''
 
-    print(f"Client: I'm not aware of the creator's class, but it still works.\n"
-          f"{creator.some_operation()}", end="")
+    def get_html(self):
+        return "<></{}>".format(self.none_text)
 
+class Tagfactory:
 
-print("App: Launched with the ConcreteCreator1.")
-client_code(ConcreteCreator1())
-print("\n")
+    @staticmethod
+    def create_tag(name):
+        if name == 'image':
+            return Image()
+        elif name == 'input':
+            return Input()
+        elif name == 'a':
+            return Link()
+        elif name == 'p':
+            return Text()
+        elif name == '':
+            return None_text()
 
-print("App: Launched with the ConcreteCreator2.")
-client_code(ConcreteCreator2())
+factory = Tagfactory()
+elements = ["image", "input", 'a', 'p', '']
+for el in elements:
+    print(factory.create_tag(el).get_html())
