@@ -1,44 +1,45 @@
-# Очевидно что это не совсем абстратный метод а ммм функциональное программирование
-import abc
-
-
-class Tag(metaclass=abc.ABCMeta):
-    @abc.abstractmethod
-    def get_html(self):
-        pass
-
-class Image(Tag):
+# Без асбстрактного метода? О_о и без наследования
+class Image():
     def __init__(self, src=None):
         self.src = src
 
 
-class Input(Tag):
+class Input():
     def __init__(self, in_type=None):
         self.in_type = in_type
 
-class Text(Tag):
+
+class Text():
     def __init__(self, text=None):
         self.text = text
 
-class Link(Tag):
+
+
+class Link():
     def __init__(self, link=None):
         self.link = link
 
+
+
 class Tagfactory:
     def create_tag(self, name):
-        if name == 'image':
-            print("<img>")
+        if name == 'image' or name == "src":
+            return "img"
         elif name == 'input':
-            print("<input>")
+            return "input"
         elif name == 'p':
-            print("<p>")
+            return "p"
         elif name == 'a':
-            print("<a>")
+            return "a"
         elif name == "":
-            print("<Тут ничего нет>")
+            return ""
+
+    def get_html(self, name):
+        print("<></{}>".format(name))
+
 
 
 factory = Tagfactory()
-elements = ["image", "input", "p", "a", ""]
+elements = ["image", "input", 'p', 'a', '']
 for el in elements:
-    factory.create_tag(el)
+    factory.get_html(factory.create_tag(el))
