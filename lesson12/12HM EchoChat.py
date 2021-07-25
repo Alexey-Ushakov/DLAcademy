@@ -20,7 +20,7 @@ while not quit:
         data, addr = s.recvfrom(1024)
         data = json.loads(data)  # Со словарем будет проще работать
 
-        if addr not in clients: # Делаем словарь из адрессов и привязываем к ним имена что отправляються
+        if addr not in clients:  # Делаем словарь из адрессов и привязываем к ним имена что отправляються
             # первым сообщением
             clients.update({addr: data["name"]})
             print(clients)
@@ -28,7 +28,7 @@ while not quit:
         itsattime = time.strftime('%Y-%m-%d-%H.%M.%S', time.localtime())
         print(addr, itsattime, '', end="")
         print(data)
-        who_send_massege = re.findall(r"\w+", data['message'])  #Условие если первым словом в сообщение являетсья имя
+        who_send_massege = re.findall(r"\w+", data['message'])  # Условие если первым словом в сообщение являетсья имя
         # другого пользователя который есть в чате сообщение отправиться только ему
         if who_send_massege[0] in clients.values():
             for addr_n, name in clients.items():
