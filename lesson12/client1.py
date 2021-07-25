@@ -1,6 +1,7 @@
 import socket
 import threading
 import time
+import json
 
 shutdown = False
 join = False
@@ -26,13 +27,19 @@ rT.start()
 
 while not shutdown:
     if not join:
-        s.sendto(('[' + name + '] => join chat ').encode('utf-8'), server)
+        data = {'name': name,
+                'message': "join chat"
+                }
+        s.sendto(json.dumps(data).encode("utf-8"), server)
         join = True
     else:
         try:
-            message = input()
+            message = input("\nYou :: ")
             if message != "":
-                s.sendto(('[' + name + '] :: ' + message).encode('utf-8'), server)
+                data = {'name': name,
+                        'message': message
+                        }
+                s.sendto(json.dumps(data).encode("utf-8"), server)
             time.sleep(0.2)
         except:
             s.sendto(('[' + name + '] :: ' + message).encode('utf-8'), server)
